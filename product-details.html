@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details — TechNova Electronics</title>
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/decor.css">
+</head>
+<body>
+
+<div class="topbar"><div class="container"><span>Free shipping on orders over <span class="accent-text">$500</span></span><span class="topbar-right" id="liveClock"></span></div></div>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="TechNova Electronics"></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="navSearchInput" placeholder="Search products…" autocomplete="off">
+        <div class="search-suggest" id="searchSuggestBox"></div>
+      </div>
+      <a href="#" class="icon-btn" aria-label="Login"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="badge-count js-cart-count">0</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="mobile-nav" id="mobileNav">
+  <button class="close-mobile" id="closeMobileNav">✕</button>
+  <ul>
+    <li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li>
+    <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html">Cart</a></li><li><a href="checkout.html">Checkout</a></li>
+  </ul>
+</aside>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Products</a> / <span id="breadcrumbProductName">Product</span></div>
+  </div>
+</section>
+
+<div id="productDetailsRoot">
+<section class="section" style="padding-top:40px;">
+  <div class="container">
+    <div class="pd-layout">
+      <div class="pd-gallery">
+        <div class="pd-gallery-main" id="pdMainImageWrap">
+          <img id="pdMainImage" src="" alt="Product image">
+        </div>
+        <div class="pd-thumbs" id="pdThumbs"></div>
+      </div>
+
+      <div class="pd-info">
+        <span class="eyebrow" id="pdCategory">Category</span>
+        <h1 id="pdName">Product Name</h1>
+        <div class="rating"><span class="stars" id="pdRatingStars"></span><span id="pdRatingText"></span></div>
+
+        <div class="pd-price-block">
+          <span class="price" id="pdPrice"></span>
+          <span id="pdOldPriceWrap" style="display:none; align-items:baseline; gap:12px;">
+            <span class="old-price" id="pdOldPrice"></span>
+            <span class="save-chip" id="pdSaveChip"></span>
+          </span>
+        </div>
+
+        <p class="pd-desc" id="pdDesc"></p>
+
+        <div class="option-group" id="pdColorGroup">
+          <label class="opt-label">Color</label>
+          <div class="swatches"></div>
+        </div>
+
+        <div class="option-group" id="pdStorageGroup">
+          <label class="opt-label">Storage</label>
+          <div class="storage-opts"></div>
+        </div>
+
+        <div class="option-group">
+          <label class="opt-label">Quantity</label>
+          <div class="qty-selector">
+            <button type="button" id="pdQtyMinus">−</button>
+            <input type="text" id="pdQtyInput" value="1" readonly>
+            <button type="button" id="pdQtyPlus">+</button>
+          </div>
+        </div>
+
+        <div class="pd-cta-row">
+          <button type="button" class="btn btn-primary" id="pdAddToCartBtn">Add to Cart — <span id="pdLineTotal"></span></button>
+          <button type="button" class="btn btn-amber" id="pdBuyNowBtn">Buy Now</button>
+        </div>
+
+        <div class="pd-meta-list">
+          <span>SKU: <span class="mono" id="pdSku"></span></span>
+          <span>Availability: <span class="mono" id="pdStock"></span></span>
+          <span>Free returns within 30 days · 1-year warranty included</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="tabs-nav">
+      <button type="button" data-tab="tabSpecs" class="active">Specifications</button>
+      <button type="button" data-tab="tabReviews">Reviews</button>
+      <button type="button" data-tab="tabDescription">Description</button>
+    </div>
+    <div class="tab-panel active" id="tabSpecs">
+      <table class="spec-table"><tbody id="pdSpecTable"></tbody></table>
+    </div>
+    <div class="tab-panel" id="tabReviews">
+      <div id="pdReviewsList"></div>
+    </div>
+    <div class="tab-panel" id="tabDescription">
+      <p id="pdDescLong" style="color:var(--ink-soft); max-width:70ch;" class="js-desc-long"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface-alt); border-top:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">You might also like</span><h2>Related Products</h2></div></div>
+    <div class="product-grid" id="relatedGrid"></div>
+  </div>
+</section>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><a href="index.html" class="logo" style="width:150px; display:block; margin-bottom:14px;"><img src="images/logo.png" alt="TechNova Electronics"></a><p>Electronics chosen for people who read the spec sheet before the marketing copy.</p><p class="mono" style="font-size:0.78rem; color:#8a9098; margin-top:10px;">735 8th Avenue SW, Calgary, AB T2P 1H5</p></div>
+      <div><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Newsletter</h4><form class="newsletter-form" id="newsletterForm"><input type="email" placeholder="you@email.com" required><button class="btn btn-amber" type="submit">Join</button></form><div id="newsletterMsg" style="font-size:0.8rem; margin-top:8px; display:none;"></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 TechNova Electronics. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+
+<script src="jquery/jquery.min.js"></script>
+<script src="js/products-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/script.js"></script>
+<script src="js/product-details.js"></script>
+<script src="jquery/jquery-script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Fill long-description tab once product loads
+    const t = setInterval(() => {
+      if (TN_CURRENT_PRODUCT) {
+        document.getElementById('pdDescLong').textContent = TN_CURRENT_PRODUCT.desc + " Designed and quality-tested by TechNova engineers, every unit ships with full documentation and regional plug/voltage support.";
+        clearInterval(t);
+      }
+    }, 100);
+  });
+</script>
+</body>
+</html>
